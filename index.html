@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyberpunk Racing</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    
+    <div class="score-container glass-panel">
+        <div class="stat">SCORE <span id="score" class="neon-text">0</span></div>
+        <div class="stat">SPEED <span id="speed" class="neon-pink">0</span> Kmh</div>
+    </div>
+
+    <!-- The Road Area -->
+    <div id="game-area">
+        <!-- Overlay Menus -->
+        <div id="start-screen" class="screen glass-panel active">
+            <h2>CYBER RACER</h2>
+            <p>Use Arrow Keys to Steer. Avoid Traffic!</p>
+            <p>Ready to burn rubber?</p>
+            <button id="start-btn" class="cyber-btn">START ENGINE</button>
+        </div>
+
+        <div id="game-over-screen" class="screen glass-panel hidden">
+            <h2 class="neon-pink">CRASHED!</h2>
+            <p>Final Score: <span id="final-score" class="neon-text">0</span></p>
+            <button id="restart-btn" class="cyber-btn">RACE AGAIN</button>
+        </div>
+        
+        <!-- Game Elements will be injected here by JS -->
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
