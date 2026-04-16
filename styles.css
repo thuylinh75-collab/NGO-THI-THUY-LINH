@@ -1,0 +1,174 @@
+:root {
+    --neon-blue: #00f3ff;
+    --neon-pink: #ff00ea;
+    --neon-green: #39ff14;
+    --dark-bg: #0b0c10;
+    --road-color: #1f2833;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Outfit', sans-serif;
+}
+
+body {
+    background-color: var(--dark-bg);
+    color: white;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.score-container {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 100;
+}
+
+.stat {
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.neon-text { color: var(--neon-blue); text-shadow: 0 0 10px var(--neon-blue); }
+.neon-pink { color: var(--neon-pink); text-shadow: 0 0 10px var(--neon-pink); }
+
+.glass-panel {
+    background: rgba(11, 12, 16, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(0, 243, 255, 0.3);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 243, 255, 0.2);
+}
+
+#game-area {
+    position: relative;
+    width: 400px;
+    height: 100vh;
+    background-color: var(--road-color);
+    box-shadow: inset 0 0 50px rgba(0,0,0,0.8), 0 0 30px rgba(255,0,234,0.2);
+    overflow: hidden;
+    border-left: 2px solid var(--neon-pink);
+    border-right: 2px solid var(--neon-pink);
+}
+
+/* Screens */
+.screen {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 200;
+    width: 80%;
+    transition: opacity 0.3s ease;
+}
+
+.screen h2 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: var(--neon-blue);
+    text-shadow: 0 0 15px var(--neon-blue);
+}
+
+.screen p {
+    margin-bottom: 20px;
+    color: #c5c6c7;
+}
+
+.hidden {
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+}
+
+.cyber-btn {
+    background: transparent;
+    color: var(--neon-pink);
+    border: 2px solid var(--neon-pink);
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+    text-transform: uppercase;
+    transition: all 0.3s;
+    box-shadow: 0 0 10px rgba(255,0,234,0.4), inset 0 0 10px rgba(255,0,234,0.2);
+}
+
+.cyber-btn:hover {
+    background: var(--neon-pink);
+    color: var(--dark-bg);
+    box-shadow: 0 0 20px var(--neon-pink);
+}
+
+/* Road Lines */
+.line {
+    position: absolute;
+    width: 10px;
+    height: 100px;
+    background: white;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 0 10px white;
+}
+
+/* Cars */
+.car {
+    position: absolute;
+    width: 50px;
+    height: 100px;
+    border-radius: 10px;
+    bottom: 20px;
+}
+
+#player {
+    background: transparent;
+    border: 2px solid var(--neon-blue);
+    box-shadow: 0 0 15px var(--neon-blue), inset 0 0 10px var(--neon-blue);
+    z-index: 10;
+}
+
+/* Fake headlights */
+#player::before, #player::after {
+    content: '';
+    position: absolute;
+    top: -10px;
+    width: 15px;
+    height: 15px;
+    background: rgba(0, 243, 255, 0.8);
+    border-radius: 50%;
+    box-shadow: 0 -20px 30px 10px rgba(0, 243, 255, 0.5);
+}
+#player::before { left: 5px; }
+#player::after { right: 5px; }
+
+.enemy {
+    background: transparent;
+    border: 2px solid var(--neon-pink);
+    box-shadow: 0 0 15px var(--neon-pink), inset 0 0 10px var(--neon-pink);
+}
+
+/* Fake red taillights for enemy */
+.enemy::before, .enemy::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    width: 12px;
+    height: 5px;
+    background: #ff0000;
+    box-shadow: 0 10px 20px 5px rgba(255, 0, 0, 0.8);
+    border-radius: 2px;
+}
+.enemy::before { left: 5px; }
+.enemy::after { right: 5px; }
